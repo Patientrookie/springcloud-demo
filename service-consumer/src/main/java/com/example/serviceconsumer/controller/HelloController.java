@@ -26,7 +26,7 @@ public class HelloController {
 
     @GetMapping(value = "/sayHi.ax")
     public String sayHi(@RequestParam(value = "name", defaultValue = "xx") String name){
-        log.info("===============eureka-client 执行===============");
+        log.info("===============service consumer 执行===============");
         return "hi,"  + name + " ,i am from port:" + serverPort;
     }
 }

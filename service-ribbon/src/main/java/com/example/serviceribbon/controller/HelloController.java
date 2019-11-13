@@ -1,6 +1,6 @@
 package com.example.serviceribbon.controller;
 
-import com.example.serviceribbon.service.HelloService;
+import com.example.serviceribbon.service.HelloSRService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloController {
 
     @Autowired
-    HelloService helloService;
+    HelloSRService helloService;
 
     private static final Logger log = LoggerFactory.getLogger(HelloController.class);
 

@@ -1,6 +1,6 @@
 package com.example.serviceribbon.service.impl;
 
-import com.example.serviceribbon.service.HelloService;
+import com.example.serviceribbon.service.HelloSRService;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
  * @modified By:
  */
 @Service
-public class HelloServiceImpl implements HelloService {
+public class HelloSRServiceImpl implements HelloSRService {
 
     @Autowired
     RestTemplate restTemplate;

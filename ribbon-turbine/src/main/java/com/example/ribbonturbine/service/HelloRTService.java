@@ -1,4 +1,4 @@
-package com.example.serviceribbon.service;
+package com.example.ribbonturbine.service;
 
 /**
  * @Author: xiaqi
@@ -7,7 +7,7 @@ package com.example.serviceribbon.service;
  * @modified By:
  */
 
-public interface HelloService {
+public interface HelloRTService {
 
     String sayHi(String name);
 
