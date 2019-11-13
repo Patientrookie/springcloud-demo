@@ -38,6 +38,11 @@
 /ribbon-turbine/target
 /ribbon-turbine/ribbon-turbine.iml
 
+#service-consumer
+/service-consumer/logs
+/service-consumer/target
+/service-consumer/service-consumer.iml
+
 #service-feign
 /service-feign/logs
 /service-feign/target
