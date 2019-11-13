@@ -1,0 +1,33 @@
+关于子项目无法导入父项目依赖的问题：
+		在 pom.xml 文件中，我们可以看到，dependencies 是 dependency 的父元素，而 dependencyManagement 又是 dependencies 的父元素，而 dependencies 元素的使用
+	情况又分为两种，一种，dependencies 元素外没有 dependencyManagement父元素，另一种，dependencies 元素外还存在 dependencyManagement 父元素。当然，两种使用情况
+	可以在同一 pom.xml文件中共存，因为二者的作用不同。
+
+		我们知道 dependency 元素是用来定义本项目对其他项目的依赖关系的。那么， dependencies 和 dependencyManagement中 dependency 的作用又有什么不同呢？
+	从宏观上讲，dependencies 中的 dependency 元素下声明的依赖会被引入当前项目，而且在子项目中即使不写该依赖项，依旧会从父项目中继承该依赖项（全部继承），
+	而 dependencyManagement 中的 dependencies 中的 dependency 元素下声明的依赖不会被引入当前项目，它仅仅是一个声明，如果在子项目中不写该依赖项，则不会从父项目中
+	继承该依赖项，如果子项目真的需要引入该依赖，则在声明的时候，可以不用指定具体版本号，会自动继承父项目 dependencyManagement 中声明的版本号，
+	从而实现了对依赖版本的统一管理。当然，如果子项目需要使用不同于父项目中声明的版本号，则需要在声明时指定版本号。
+		
+springboot 加载配置文件优先级的问题：
+	bootstrap用来程序引导时执行，应用于更加早期配置信息读取，
+	application 应用程序特有配置信息，可以用来配置后续各个模块中需使用的公共参数。
+	
+	
+springcloud 配置config-server动态刷新的问题：
+		
+		第一个问题：配置config-server动态刷新的时候，要在github上的项目里面配置webhook，要提供一个Payload URL,这个URL不能是本地的地址，或者局域网的地址，要是公网上的地址，否则就会出现
+	"We couldn’t deliver this payload: Failure when receiving data from the peer"这个错误，意思就是找不到你的这个URL地址。 
+		解决办法：下载ngrok ，使用ngrok将你本地地址变成公网地址。
+			（1） ./ngrok authtoken 你的token码
+			（2） ./ngrok http 端口号
+			
+		第二个问题：webhook 400错误 ，原因就是GitHub在进行post请求的同时默认会在body加上这么一串载荷(payload)，于是spring boot因为无法正常反序列化这串载荷而报了400错误。
+		解决办法：写一个过滤器将Body直接返回为空，就可以达到过滤body的效果。（https://blog.csdn.net/qq_42684642/article/details/86530761）
+		
+
+git提交代码时遇到的转行转义问题：
+		LF will be replaced by CRLF in 。
+		解决办法：git config --global core.autocrlf true
+
+		

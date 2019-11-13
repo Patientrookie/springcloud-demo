@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/Patientrookie/springcloud-demo
+          search-paths: /config-server/src/main/resources/config-repository
+          username:
+          password:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+
+server:
+  port: 1501
+
+#      label: master/config-server
+#      profile: test
+
+
+#  http请求地址和资源文件映射如下:
+#  * /{application}/{profile}[/{label}]
+#  * /{application}-{profile}.yml
+#  * /{label}/{application}-{profile}.yml
+#  * /{application}-{profile}.properties
+#  * /{label}/{application}-{profile}.properties
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1001/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+
